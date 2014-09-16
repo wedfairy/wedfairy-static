@@ -1,0 +1,2 @@
+tatstatic / wedfairy cdn
+======
