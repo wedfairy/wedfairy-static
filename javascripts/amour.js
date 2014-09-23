@@ -406,6 +406,7 @@
     };
     
     var initErrorReporting = function() {
+        if (window['amour-disable-error-reporting']) return;
         var ClientError = Amour.Model.extend({
             urlRoot: Amour.APIHost + '/clients/error/' 
         });
