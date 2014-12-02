@@ -201,23 +201,23 @@
     Amour.isMobile = /iPhone|Android|iPad|Windows Phone/i.test(navigator.userAgent);
     
     Amour.storage = new function() {
-        this.set = function(key, val) { localStorage.setItem(key, val); }
-        this.get = function(key) { return localStorage.getItem(key); }
-        this.del = function(key) { localStorage.removeItem(key); }
+        this.set = function(key, val) { localStorage.setItem(key, val); };
+        this.get = function(key) { return localStorage.getItem(key); };
+        this.del = function(key) { localStorage.removeItem(key); };
         try {
             localStorage.setItem('TEST_LOCALSTORAGE', 1);
         } catch (e) {
             alert('您的浏览器可能开启了“无痕(Private)浏览”，可能需要多次输入用户名和密码以保持登录状态');
             this.vault = {};
-            this.set = function(key, val) { this.vault[key] = val; }
-            this.get = function(key) { return this.vault[key]; }
-            this.del = function(key) { this.vault[key] = null; }
+            this.set = function(key, val) { this.vault[key] = val; };
+            this.get = function(key) { return this.vault[key]; };
+            this.del = function(key) { this.vault[key] = null; };
         }
     };
     
     Amour.openWindow = function(link) {
         window.open(link, '_self', 'location=no');
-    }
+    };
     
     Amour.imageFullpath = function(src) {
         return /^http:\/\//.test(src) ? src : Amour.CDNURL + src;
