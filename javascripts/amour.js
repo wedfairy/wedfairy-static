@@ -31,7 +31,7 @@
      * Amour
      */
     
-    var Amour = {
+    var Amour = window.Amour = {
         version: '1.0',
         APIHost: $('meta[name="APIHost"]').attr('content'),
         CDNURL: $('meta[name="CDNURL"]').attr('content')
@@ -431,6 +431,5 @@
     initSync();
     initAjaxEvents();
     initErrorReporting();
-    window.Amour = Amour;
     
 })();
