@@ -291,8 +291,8 @@
             return this.storyEvents.findWhere({name: name});
         },
         getStoryEventData: function(name, key) {
-            var storyEvent = this.storyEvents.findWhere({name: name});
-            return storyEvent.getData(key);
+            var storyEvent = this.getStoryEvent(name);
+            return storyEvent ? storyEvent.getData(key) : null;
         },
         updateStoryEvent: function(name, updates) {
             var storyEvent = this.storyEvents.findWhere({name: name});
