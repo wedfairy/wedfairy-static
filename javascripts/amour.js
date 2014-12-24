@@ -340,6 +340,14 @@
         parse: function(response) {
             return _.isArray(response) ? response[0] : response;
         },
+        change_password: function(password, options) {
+            options = options || {};
+            options.url = Amour.APIHost + '/users/user/change_password/';
+            options.patch = true;
+            this.save({
+                password: password
+            }, options);
+        },
         login: function(auth, options) {
             this.clear().set(auth);
             options = options || {};
