@@ -465,13 +465,15 @@
         };
     };
     
+    if (!window['amour-lazy-loading-images']) {
+        Amour.fillImages();
+    }
+    
     /* 
      * Export
      */
     initSync();
     initAjaxEvents();
     initErrorReporting();
-    
-    Amour.fillImages();    
     
 })();
