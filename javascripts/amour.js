@@ -220,7 +220,13 @@
     };
     
     Amour.imageFullpath = function(src) {
-        return /^http:\/\//.test(src) ? src : Amour.CDNURL + src;
+        var fullPath = /^http:\/\//.test(src) ? src : Amour.CDNURL + src;
+        return fullPath.replace('tatapp.qiniudn.com', '7nj3ca.com2.z0.glb.clouddn.com')
+                       .replace('tatmusic.qiniudn.com', '7lryz5.com2.z0.glb.clouddn.com')
+                       .replace('tatstatic.qiniudn.com', '7o4zu3.com2.z0.glb.clouddn.com')
+                       .replace('tatstory.qiniudn.com', '7o4zn1.com2.z0.glb.clouddn.com')
+                       .replace('tatup.qiniudn.com', '7fvjje.com2.z0.glb.clouddn.com')
+                       .replace('wedfairy.qiniudn.com', '7fvjj2.com2.z0.glb.clouddn.com');
     };
     
     Amour.loadImage = function(img, src, options) {
