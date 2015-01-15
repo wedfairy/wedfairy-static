@@ -219,14 +219,26 @@
         window.open(link, '_self', 'location=no');
     };
     
-    Amour.imageFullpath = function(src) {
-        return /^http:\/\//.test(src) ? src : Amour.CDNURL + src;
+    Amour.optimizeImage = function(fullpath) {
+        var optimpath = fullpath;
+        if (/^http:\/\/up\.img\.8yinhe\.cn\/wechat\//.test(fullpath)) {
+            optimpath += '!wechat';
+        } else if (/^http:\/\/up\.img\.8yinhe\.cn\//.test(fullpath)) {
+            optimpath += '!small';
+        }
+        return optimpath;
+    };
+    
+    Amour.imageFullpath = function(src, options) {
+        options = options || {};
+        var fullpath = /^http:\/\//.test(src) ? src : Amour.CDNURL + src;
+        return options.optimize === false ? fullpath: Amour.optimizeImage(fullpath);
     };
     
     Amour.loadImage = function(img, src, options) {
         if (!src) return;
         options = options || {};
-        var image = new Image(), image_src = Amour.imageFullpath(src);
+        var image = new Image(), image_src = Amour.imageFullpath(src, options);
         image.onload = function() {
             img.attr('src', image_src);
             options.success && options.success();
@@ -242,7 +254,7 @@
         if (!src) return;
         options = options || {};
         el.css('background-image', 'url(' + Amour.CDNURL + 'images/loading.gif' + ')');
-        var image = new Image(), image_src = Amour.imageFullpath(src);
+        var image = new Image(), image_src = Amour.imageFullpath(src, options);
         image.onload = function() {
             el.removeClass('img-loading');
             el.css('background-image', 'url(' + image_src + ')');
