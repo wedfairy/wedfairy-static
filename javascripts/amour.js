@@ -37,6 +37,10 @@
         CDNURL: $('meta[name="CDNURL"]').attr('content')
     };
     
+    if (!$.support.cors) {
+        Amour.APIRoot = '/api/';
+    }
+    
     /*
      * Events and Routers
      */
