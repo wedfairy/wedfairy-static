@@ -33,7 +33,7 @@
     
     var Amour = window.Amour = {
         version: '1.0',
-        APIHost: $('meta[name="APIHost"]').attr('content'),
+        APIRoot: $('meta[name="APIRoot"]').attr('content'),
         CDNURL: $('meta[name="CDNURL"]').attr('content')
     };
     
@@ -315,16 +315,16 @@
     };
     
     Amour.Models.StoryEvent = Amour.Model.extend({
-        urlRoot: Amour.APIHost + '/sites/storyevent/'
+        urlRoot: Amour.APIRoot + 'sites/storyevent/'
     }).extend(dataMixins);
     
     Amour.Collections.StoryEvents = Amour.Collection.extend({
-        url: Amour.APIHost + '/sites/storyevent/',
+        url: Amour.APIRoot + 'sites/storyevent/',
         model: Amour.Models.StoryEvent
     });
     
     Amour.Models.Story = Amour.Model.extend({
-        urlRoot: Amour.APIHost + '/sites/story/',
+        urlRoot: Amour.APIRoot + 'sites/story/',
         initModel: function() {
             this.storyEvents = new Amour.Collections.StoryEvents(this.get('storyEvents'));
             this.on('change:storyEvents', function() {
@@ -346,7 +346,7 @@
     }).extend(dataMixins);
     
     Amour.Collections.Stories = Amour.Collection.extend({
-        url: Amour.APIHost + '/sites/story/',
+        url: Amour.APIRoot + 'sites/story/',
         model: Amour.Models.Story
     });
     
@@ -361,7 +361,7 @@
     
     Amour.Models.Schema = Amour.Model.extend({
         idAttribute: 'name',
-        urlRoot: Amour.APIHost + '/sites/schema/',
+        urlRoot: Amour.APIRoot + 'sites/schema/',
         initModel: function() {
             this.sections = new Amour.Collections.Sections(this.get('sections'));
             this.on('change:sections', function() {
@@ -374,19 +374,19 @@
     }).extend(dataMixins);
     
     Amour.Collections.Schemas = Amour.Collection.extend({
-        url: Amour.APIHost + '/sites/schema/',
+        url: Amour.APIRoot + 'sites/schema/',
         model: Amour.Models.Schema
     });
     
     Amour.Models.User = Amour.Model.extend({
-        urlRoot: Amour.APIHost + '/users/user/',
+        urlRoot: Amour.APIRoot + 'users/user/',
         initModel: function() {},
         parse: function(response) {
             return _.isArray(response) ? response[0] : response;
         },
         change_password: function(password, options) {
             options = options || {};
-            options.url = Amour.APIHost + '/users/user/change_password/';
+            options.url = Amour.APIRoot + 'users/user/change_password/';
             options.patch = true;
             this.save({
                 password: password
@@ -395,7 +395,7 @@
         login: function(auth, options) {
             this.clear().set(auth);
             options = options || {};
-            options.url = Amour.APIHost + '/api-token-auth/';
+            options.url = Amour.APIRoot + 'api-token-auth/';
             var success = options.success;
             options.success = function(model, response, options) {
                 Amour.TokenAuth.set(response.token);
@@ -460,7 +460,7 @@
     var initErrorReporting = function() {
         if (window['amour-disable-error-reporting']) return;
         var ClientError = Amour.Model.extend({
-            urlRoot: Amour.APIHost + '/clients/error/' 
+            urlRoot: Amour.APIRoot + 'clients/error/' 
         });
         window.onerror = function(message) {
             try {
