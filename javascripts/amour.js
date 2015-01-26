@@ -224,7 +224,7 @@
         if (/^http:\/\/up\.img\.8yinhe\.cn\/wechat\//.test(fullpath)) {
             optimpath += '!wechat';
         } else if (/^http:\/\/up\.img\.8yinhe\.cn\//.test(fullpath)) {
-            optimpath += '!small';
+            optimpath += Amour.isMobile ? '!small' : '!large';
         }
         return optimpath;
     };
