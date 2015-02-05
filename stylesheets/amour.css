@@ -24,6 +24,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; }
+  .img.img-cover {
+    background-size: cover; }
+  .img.img-contain {
+    background-size: contain; }
+  .img.img-stretch {
+    background-size: 100% 100%; }
 
 .img-loading {
   background-color: white;
