@@ -224,11 +224,19 @@
     };
     
     Amour.optimizeImage = function(fullpath) {
+        if (/\?imageMogr2\//.test(fullpath)) {
+            return fullpath;
+        }
+        var optimQuery = {
+            wechat: '?imageView2/2/w/960/q/85/format/JPG',
+            small: '?imageView2/2/w/640/q/85',
+            large: '?imageView2/2/w/1280/q/85'
+        }
         var optimpath = fullpath;
         if (/^http:\/\/up\.img\.8yinhe\.cn\/wechat\//.test(fullpath)) {
-            optimpath += '!wechat';
+            optimpath += optimQuery.wechat;
         } else if (/^http:\/\/up\.img\.8yinhe\.cn\//.test(fullpath)) {
-            optimpath += Amour.isMobile ? '!small' : '!large';
+            optimpath += Amour.isMobile ? optimQuery.small : optimQuery.large;
         }
         return optimpath;
     };
