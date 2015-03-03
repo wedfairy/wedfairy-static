@@ -248,8 +248,11 @@
     };
     
     Amour.loadImage = function(img, src, options) {
-        if (!src) return;
         options = options || {};
+        if (!src) {
+            options.error && options.error();
+            return;
+        }
         var image = new Image(), image_src = Amour.imageFullpath(src, options);
         image.onload = function() {
             img.attr('src', image_src);
@@ -263,8 +266,11 @@
     };
     
     Amour.loadBgImage = function(el, src, options) {
-        if (!src) return;
         options = options || {};
+        if (!src) {
+            options.error && options.error();
+            return;
+        }
         el.css('background-image', 'url(' + Amour.CDNURL + 'images/loading.gif' + ')');
         var image = new Image(), image_src = Amour.imageFullpath(src, options);
         image.onload = function() {
@@ -290,13 +296,13 @@
         imageLoad();
         $('img[data-src]').each(function() {
             var src = $(this).data('src');
-            src && Amour.loadImage($(this), src, {
+            Amour.loadImage($(this), src, {
                 success: imageLoad, error: imageLoad
             });
         });
         $('.img[data-bg-src]').each(function() {
             var src = $(this).data('bg-src');
-            src && Amour.loadBgImage($(this), src, {
+            Amour.loadBgImage($(this), src, {
                 success: imageLoad, error: imageLoad
             });
         });
