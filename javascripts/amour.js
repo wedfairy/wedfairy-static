@@ -1,5 +1,9 @@
 (function() {
     
+    if (navigator.userAgent.match(/MQQBrowser/)) {
+        Backbone.emulateHTTP = true;
+    }
+    
     if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
         var msViewportStyle = document.createElement("style");
         msViewportStyle.appendChild(
