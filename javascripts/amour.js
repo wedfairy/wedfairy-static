@@ -320,18 +320,41 @@
     Amour.Collections = {};
     
     var dataMixins = {
-        getData: function(key) {
-            var data = this.get('data');
-            if (!_.isObject(data)) data = {};
-            return key != null ? data[key] : data;
-        },
-        setData: function(key, value) {
-            if (key == null) return;
-            if (!_.isObject(this.attributes.data)) this.attributes.data = {};
-            if (_.isObject(key)) {
-                _.extend(this.attributes.data, key);
+        getData: function(key, root) {
+            var data = root || this.get('data');
+            if (key == null) {
+                return data;
+            } else if (!_.isString(key) || !_.isObject(data)) {
+                return null;
             } else {
-                this.attributes.data[key] = value;
+                var i = key.indexOf('.');
+                if (i > 0) {
+                    var d = data[key.substr(0, i)];
+                    return (d == null) ? null : this.getData(key.substr(i+1), d);
+                } else {
+                    return data[key];
+                }
+            }
+        },
+        setData: function(key, value, root) {
+            if (!root) {
+                if (!_.isObject(this.attributes.data)) this.attributes.data = {};
+                root = this.attributes.data;
+            }
+            if (_.isObject(key)) {
+                _.extend(root, key);
+            } else if (_.isString(key)) {
+                var i = key.indexOf('.');
+                if (i > 0) {
+                    var k = key.substr(0, i);
+                    var k2 = key.substr(i+1);
+                    if (root[k] == null) {
+                        root[k] = _.isFinite(k2.split('.')[0]) ? [] : {};
+                    }
+                    this.setData(k2, value, root[k]);
+                } else {
+                    root[key] = value;
+                }
             }
         }
     };
