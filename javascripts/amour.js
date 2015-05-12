@@ -275,7 +275,7 @@
             options.error && options.error();
             return;
         }
-        el.css('background-image', 'url(' + Amour.CDNURL + 'images/loading.gif' + ')');
+        //el.css('background-image', 'url(' + Amour.CDNURL + 'images/loading.gif' + ')');
         var image = new Image(), image_src = Amour.imageFullpath(src, options);
         image.onload = function() {
             el.removeClass('img-loading');
@@ -284,7 +284,7 @@
         };
         image.onerror = function() {
             el.removeClass('img-loading');
-            el.css('background-image', null);
+            //el.css('background-image', null);
             options.error && options.error();
         };
         el.addClass('img-loading');
