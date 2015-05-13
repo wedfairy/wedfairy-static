@@ -9,9 +9,9 @@
   if (typeof exports === "object" && exports) {
     factory(exports); // CommonJS
   } else if (typeof define === "function" && define.amd) {
-    define(factory({})); // AMD
+    define(['exports'], factory); // AMD
   } else {
-    global.Mustache = factory({}); // <script>
+    factory(global.Mustache = {}); // <script>
   }
 }(this, function (mustache) {
 
@@ -39,7 +39,7 @@
   function isWhitespace(string) {
     return !testRegExp(nonSpaceRe, string);
   }
-  
+
   var entityMap = {
     "&": "&amp;",
     "<": "&lt;",
@@ -334,7 +334,7 @@
    * maintaining a reference to the parent context.
    */
   function Context(view, parentContext) {
-    this.view = view == null ? {} : view;
+    this.view = view;
     this.cache = { '.': this.view };
     this.parent = parentContext;
   }
@@ -358,7 +358,7 @@
     if (name in cache) {
       value = cache[name];
     } else {
-      var context = this, names, index;
+      var context = this, names, index, lookupHit = false;
 
       while (context) {
         if (name.indexOf('.') > 0) {
@@ -366,13 +366,29 @@
           names = name.split('.');
           index = 0;
 
-          while (value != null && index < names.length)
+          /**
+           * Using the dot notion path in `name`, we descend through the
+           * nested objects.
+           *
+           * To be certain that the lookup has been successful, we have to
+           * check if the last object in the path actually has the property
+           * we are looking for. We store the result in `lookupHit`.
+           *
+           * This is specially necessary for when the value has been set to
+           * `undefined` and we want to avoid looking up parent contexts.
+           **/
+          while (value != null && index < names.length) {
+            if (index === names.length - 1 && value != null)
+              lookupHit = (typeof value === 'object') &&
+                value.hasOwnProperty(names[index]);
             value = value[names[index++]];
-        } else {
+          }
+        } else if (context.view != null && typeof context.view === 'object') {
           value = context.view[name];
+          lookupHit = context.view.hasOwnProperty(name);
         }
 
-        if (value != null)
+        if (lookupHit)
           break;
 
         context = context.parent;
@@ -444,88 +460,95 @@
   Writer.prototype.renderTokens = function (tokens, context, partials, originalTemplate) {
     var buffer = '';
 
-    // This function is used to render an arbitrary template
-    // in the current context by higher-order sections.
-    var self = this;
-    function subRender(template) {
-      return self.render(template, context, partials);
-    }
-
-    var token, value;
+    var token, symbol, value;
     for (var i = 0, numTokens = tokens.length; i < numTokens; ++i) {
+      value = undefined;
       token = tokens[i];
+      symbol = token[0];
 
-      switch (token[0]) {
-      case '#':
-        value = context.lookup(token[1]);
+      if (symbol === '#') value = this._renderSection(token, context, partials, originalTemplate);
+      else if (symbol === '^') value = this._renderInverted(token, context, partials, originalTemplate);
+      else if (symbol === '>') value = this._renderPartial(token, context, partials, originalTemplate);
+      else if (symbol === '&') value = this._unescapedValue(token, context);
+      else if (symbol === 'name') value = this._escapedValue(token, context);
+      else if (symbol === 'text') value = this._rawValue(token);
 
-        if (!value)
-          continue;
-
-        if (isArray(value)) {
-          for (var j = 0, valueLength = value.length; j < valueLength; ++j) {
-            buffer += this.renderTokens(token[4], context.push(value[j]), partials, originalTemplate);
-          }
-        } else if (typeof value === 'object' || typeof value === 'string') {
-          buffer += this.renderTokens(token[4], context.push(value), partials, originalTemplate);
-        } else if (isFunction(value)) {
-          if (typeof originalTemplate !== 'string')
-            throw new Error('Cannot use higher-order sections without the original template');
-
-          // Extract the portion of the original template that the section contains.
-          value = value.call(context.view, originalTemplate.slice(token[3], token[5]), subRender);
-
-          if (value != null)
-            buffer += value;
-        } else {
-          buffer += this.renderTokens(token[4], context, partials, originalTemplate);
-        }
-
-        break;
-      case '^':
-        value = context.lookup(token[1]);
-
-        // Use JavaScript's definition of falsy. Include empty arrays.
-        // See https://github.com/janl/mustache.js/issues/186
-        if (!value || (isArray(value) && value.length === 0))
-          buffer += this.renderTokens(token[4], context, partials, originalTemplate);
-
-        break;
-      case '>':
-        if (!partials)
-          continue;
-
-        value = isFunction(partials) ? partials(token[1]) : partials[token[1]];
-
-        if (value != null)
-          buffer += this.renderTokens(this.parse(value), context, partials, value);
-
-        break;
-      case '&':
-        value = context.lookup(token[1]);
-
-        if (value != null)
-          buffer += value;
-
-        break;
-      case 'name':
-        value = context.lookup(token[1]);
-
-        if (value != null)
-          buffer += mustache.escape(value);
-
-        break;
-      case 'text':
-        buffer += token[1];
-        break;
-      }
+      if (value !== undefined)
+        buffer += value;
     }
 
     return buffer;
   };
 
+  Writer.prototype._renderSection = function (token, context, partials, originalTemplate) {
+    var self = this;
+    var buffer = '';
+    var value = context.lookup(token[1]);
+
+    // This function is used to render an arbitrary template
+    // in the current context by higher-order sections.
+    function subRender(template) {
+      return self.render(template, context, partials);
+    }
+
+    if (!value) return;
+
+    if (isArray(value)) {
+      for (var j = 0, valueLength = value.length; j < valueLength; ++j) {
+        buffer += this.renderTokens(token[4], context.push(value[j]), partials, originalTemplate);
+      }
+    } else if (typeof value === 'object' || typeof value === 'string' || typeof value === 'number') {
+      buffer += this.renderTokens(token[4], context.push(value), partials, originalTemplate);
+    } else if (isFunction(value)) {
+      if (typeof originalTemplate !== 'string')
+        throw new Error('Cannot use higher-order sections without the original template');
+
+      // Extract the portion of the original template that the section contains.
+      value = value.call(context.view, originalTemplate.slice(token[3], token[5]), subRender);
+
+      if (value != null)
+        buffer += value;
+    } else {
+      buffer += this.renderTokens(token[4], context, partials, originalTemplate);
+    }
+    return buffer;
+  };
+
+  Writer.prototype._renderInverted = function(token, context, partials, originalTemplate) {
+    var value = context.lookup(token[1]);
+
+    // Use JavaScript's definition of falsy. Include empty arrays.
+    // See https://github.com/janl/mustache.js/issues/186
+    if (!value || (isArray(value) && value.length === 0))
+      return this.renderTokens(token[4], context, partials, originalTemplate);
+  };
+
+  Writer.prototype._renderPartial = function(token, context, partials) {
+    if (!partials) return;
+
+    var value = isFunction(partials) ? partials(token[1]) : partials[token[1]];
+    if (value != null)
+      return this.renderTokens(this.parse(value), context, partials, value);
+  };
+
+  Writer.prototype._unescapedValue = function(token, context) {
+    var value = context.lookup(token[1]);
+    if (value != null)
+      return value;
+  };
+
+  Writer.prototype._escapedValue = function(token, context) {
+    var value = context.lookup(token[1]);
+    if (value != null)
+      return mustache.escape(value);
+  };
+
+  Writer.prototype._rawValue = function(token) {
+    return token[1];
+  };
+
   mustache.name = "mustache.js";
-  mustache.version = "0.8.1";
+  mustache.version = "2.0.0";
   mustache.tags = [ "{{", "}}" ];
 
   // All high-level mustache.* functions use this writer.
@@ -574,7 +597,5 @@
   mustache.Scanner = Scanner;
   mustache.Context = Context;
   mustache.Writer = Writer;
-
-  return mustache;
 
 }));
