@@ -37,3 +37,10 @@
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-image: url(../images/img-loading.gif) !important; }
+
+.img-broken {
+  background-color: white;
+  background-size: 32px 32px !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-image: url(../images/img-broken.png) !important; }

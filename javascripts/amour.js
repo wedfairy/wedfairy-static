@@ -283,7 +283,7 @@
             options.success && options.success();
         };
         image.onerror = function() {
-            el.removeClass('img-loading');
+            el.removeClass('img-loading').addClass('img-broken');
             //el.css('background-image', null);
             options.error && options.error();
         };
