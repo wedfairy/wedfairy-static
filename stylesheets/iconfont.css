@@ -15,6 +15,9 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-delete:before { content: "\e606"; }
+.icon-add-dash:before { content: "\e634"; }
+.icon-function:before { content: "\e635"; }
 .icon-inspiration:before { content: "\e609"; }
 .icon-add:before { content: "\e600"; }
 .icon-app:before { content: "\e601"; }
@@ -22,7 +25,6 @@
 .icon-camera:before { content: "\e603"; }
 .icon-check:before { content: "\e604"; }
 .icon-code:before { content: "\e605"; }
-.icon-delete:before { content: "\e606"; }
 .icon-display:before { content: "\e607"; }
 .icon-down:before { content: "\e608"; }
 .icon-favor:before { content: "\e60a"; }
@@ -66,3 +68,5 @@
 .icon-top:before { content: "\e630"; }
 .icon-unfold:before { content: "\e631"; }
 .icon-edit:before { content: "\e632"; }
+.icon-forbidden:before { content: "\e633"; }
+.icon-check-corner:before { content: "\e636"; }
