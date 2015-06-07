@@ -228,7 +228,7 @@
     };
     
     Amour.optimizeImage = function(fullpath) {
-        if (/\?imageMogr2\//.test(fullpath)) {
+        if (/\?imageMogr2\/|\?imageView2\//.test(fullpath)) {
             return fullpath;
         }
         var optimQuery = {
