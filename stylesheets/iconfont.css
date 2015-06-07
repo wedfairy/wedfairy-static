@@ -1,5 +1,8 @@
 
-@font-face {font-family: "iconfont";
+/* path */
+
+@font-face {
+  font-family: 'iconfont';
   src: url('../fonts/iconfont/iconfont.eot'); /* IE9*/
   src: url('../fonts/iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
   url('../fonts/iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
@@ -7,14 +10,71 @@
   url('../fonts/iconfont/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
+/* core */
+
 .iconfont {
-  font-family:"iconfont" !important;
-  font-size:16px;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-family: IconFont !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
   -webkit-text-stroke-width: 0.2px;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* size */
+
+.iconfont-lg {
+  font-size: 1.33333em;
+  line-height: 0.75em;
+  vertical-align: -15%;
+}
+
+.iconfont-2x { font-size: 2em; }
+.iconfont-3x { font-size: 3em; }
+.iconfont-4x { font-size: 4em; }
+.iconfont-5x { font-size: 5em; }
+
+.iconfont-fw {
+  width: 1.28571em;
+  text-align: center;
+}
+
+/* spinning */
+
+.iconfont-spin {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(359deg); }
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(359deg); }
+}
+@-o-keyframes spin {
+  0% { -o-transform: rotate(0deg); }
+  100% { -o-transform: rotate(359deg); }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* icons */
+
 .icon-delete:before { content: "\e606"; }
 .icon-add-dash:before { content: "\e634"; }
 .icon-function:before { content: "\e635"; }
