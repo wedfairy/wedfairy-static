@@ -73,6 +73,21 @@
   }
 }
 
+/* logo brand */
+
+.icon-logo-brand:before {
+  content: "\e638";
+  vertical-align: middle;
+  font-size: 1.7em;
+  margin-top: -0.05em;
+}
+
+.icon-logo-brand:after {
+  content: "\e639\e63a\e63b";
+  vertical-align: middle;
+  letter-spacing: 0.15em;
+}
+
 /* icons */
 
 .icon-music:before { content: "\e61a"; }
