@@ -425,7 +425,14 @@
     
     Amour.Models.User = Amour.Model.extend({
         urlRoot: Amour.APIRoot + 'users/user/',
-        initModel: function() {},
+        initModel: function() {
+            this.profile = new (Amour.Model.extend({
+                urlRoot: Amour.APIRoot + 'users/profile/',
+            }))(this.get('profile'));
+            this.on('change:profile', function() {
+                this.profile.set(this.get('profile'));
+            }, this);
+        },
         parse: function(response) {
             return _.isArray(response) ? response[0] : response;
         },
