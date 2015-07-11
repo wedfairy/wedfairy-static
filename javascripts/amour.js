@@ -458,11 +458,8 @@
         },
         register: function(auth, options) {
             this.clear().set(auth);
-            var referral = Amour.storage.get('referral');
-            referral && this.set({ referral: referral });
             var success = options.success;
             options.success = function(model, response, options) {
-                if (referral) Amour.storage.del('referral');
                 if (success) success(model, response, options);
             };
             this.save({}, options);
@@ -539,14 +536,6 @@
     if (!window['amour-lazy-loading-images']) {
         Amour.fillImages();
     }
-
-    (function() {
-        var match = window.location.search.match(/[\?\&]referral=(\w+)(&|$)/);
-        if (match) {
-            var referral = match[1];
-            Amour.storage.set('referral', referral);
-        }
-    })();
     
     /* 
      * Export
