@@ -14,19 +14,6 @@
         document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
     }
     
-    var fastclick = new FastClick(document.body);
-    $('body').on('focus', 'textarea', function() {
-        if (fastclick != null) {
-            fastclick.destroy();
-            fastclick = null;
-        }
-    });
-    $('body').on('blur', 'textarea', function() {
-        if (fastclick == null) {
-            fastclick = new FastClick(document.body);
-        }
-    });
-    
     if (!window.location.origin) {
         window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
     }
@@ -40,7 +27,36 @@
         APIRoot: $('meta[name="APIRoot"]').attr('content'),
         CDNURL: $('meta[name="CDNURL"]').attr('content')
     };
+
+    /*
+     * Devices
+     */
+
+    Amour.isWeixin = /MicroMessenger/i.test(navigator.userAgent);
+    Amour.isMobile = /iPhone|Android|iPad|Windows Phone/i.test(navigator.userAgent);
+    Amour.isHybrid = typeof webkit != 'undefined' && 
+                     typeof webkit.messageHandlers != 'undefined';
     
+    /*
+     * Devices
+     */
+
+    (function() {
+        var fastclick = new FastClick(document.body);
+        $('body').on('focus', 'textarea', function() {
+            if (fastclick != null) {
+                fastclick.destroy();
+                fastclick = null;
+            }
+        });
+        $('body').on('blur', 'textarea', function() {
+            if (fastclick == null) {
+                fastclick = new FastClick(document.body);
+            }
+        });
+        Amour.fastclick = fastclick;
+    })();
+
     if (!$.support.cors) {
         Amour.APIRoot = '/api/';
     }
@@ -204,9 +220,6 @@
     /*
      * Utility Functions
      */
-    
-    Amour.isWeixin = /MicroMessenger/i.test(navigator.userAgent);
-    Amour.isMobile = /iPhone|Android|iPad|Windows Phone/i.test(navigator.userAgent);
     
     Amour.storage = new function() {
         this.set = function(key, val) { localStorage.setItem(key, val); };
