@@ -28,20 +28,7 @@
         CDNURL: $('meta[name="CDNURL"]').attr('content')
     };
 
-    /*
-     * Devices
-     */
-
-    Amour.isWeixin = /MicroMessenger/i.test(navigator.userAgent);
-    Amour.isMobile = /iPhone|Android|iPad|Windows Phone/i.test(navigator.userAgent);
-    Amour.isHybrid = typeof webkit != 'undefined' && 
-                     typeof webkit.messageHandlers != 'undefined';
-    
-    /*
-     * Devices
-     */
-
-    (function() {
+    (function initFastclick() {
         var fastclick = new FastClick(document.body);
         $('body').on('focus', 'textarea', function() {
             if (fastclick != null) {
@@ -54,12 +41,32 @@
                 fastclick = new FastClick(document.body);
             }
         });
-        Amour.fastclick = fastclick;
     })();
 
     if (!$.support.cors) {
         Amour.APIRoot = '/api/';
     }
+
+    /*
+     * Devices
+     */
+
+    Amour.isWeixin = /MicroMessenger/i.test(navigator.userAgent);
+    Amour.isMobile = /iPhone|Android|iPad|Windows Phone/i.test(navigator.userAgent);
+    (function initHybridApp() {
+        Amour.isHybrid = false;
+        var checkHybrid = function() {
+            Amour.isHybrid = typeof webkit != 'undefined' && 
+                             typeof webkit.messageHandlers != 'undefined';
+        };
+        document.addEventListener("hybriddeviceready", checkHybrid, false);
+        if (window.hybriddeviceready) checkHybrid();
+        Amour.postHybridMessage = function(name, message) {
+            if (!Amour.isHybrid) return;
+            var handler = window.webkit.messageHandlers[name];
+            handler && handler.postMessage(message);
+        };
+    })();
     
     /*
      * Events and Routers
