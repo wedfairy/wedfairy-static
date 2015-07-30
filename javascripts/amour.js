@@ -60,7 +60,8 @@
                              typeof webkit.messageHandlers != 'undefined';
         };
         document.addEventListener("hybriddeviceready", checkHybrid, false);
-        if (window.hybriddeviceready) checkHybrid();
+        checkHybrid();
+        // if (window.hybriddeviceready) checkHybrid();
         Amour.postHybridMessage = function(name, message) {
             if (!Amour.isHybrid) return;
             var handler = window.webkit.messageHandlers[name];
