@@ -106,7 +106,6 @@
 .icon-list-ol:before { content: "\e60e"; }
 .icon-text:before { content: "\e61e"; }
 .icon-location-arrow:before { content: "\e60f"; }
-.icon-like:before { content: "\e62a"; }
 .icon-share-square:before { content: "\e60c"; }
 .icon-woman:before { content: "\e610"; }
 .icon-person:before { content: "\e613"; }
@@ -146,3 +145,5 @@
 .icon-logo:before { content: "\e612"; }
 .icon-comment-alt:before { content: "\e623"; }
 .icon-ellipsis-h-o:before { content: "\e629"; }
+.icon-like:before { content: "\e630"; }
+.icon-like-o:before { content: "\e62b"; }
