@@ -527,9 +527,12 @@
         });
         $(document).ajaxError(function (event, jqxhr, settings, exception) {
             var response = jqxhr.responseJSON || {};
-            if (jqxhr.status == 401 || jqxhr.status == 403 || jqxhr.status == 499) {
+            if (jqxhr.status == 401 || jqxhr.status == 499) {
                 Amour.TokenAuth.clear();
                 Amour.ajax.trigger('unauthorized');
+            } else if (jqxhr.status == 403) {
+                Amour.TokenAuth.clear();
+                Amour.ajax.trigger('forbidden');
             } else if (settings.type == 'GET' && jqxhr.statusText != 'abort') {
                 Amour.ajax.trigger('error');
             }
