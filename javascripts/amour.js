@@ -87,6 +87,20 @@
      * Models and Views
      */
     
+    var TPL = Amour.TPL = {};
+    TPL.render = function(template, attrs) {
+        var template = template || '';
+        var attrs = attrs || {};
+        if (window.Handlebars) {
+            var compiledTemplate = Handlebars.compile(template);
+            return compiledTemplate(attrs);
+        } else if (window.Mustache) {
+            return Mustache.render(template, attrs);
+        } else {
+            return template;
+        }
+    }
+    
     var Model = Amour.Model = Backbone.Model.extend({
         initialize: function() {
             if (this.initModel) this.initModel();
@@ -135,7 +149,7 @@
         renderTemplate: function(attrs, template) {
             var template = template || _.result(this, 'template') || '';
             var attrs = this.mixinTemplateHelpers(attrs);
-            this.$el.html(Mustache.render(template, attrs));
+            this.$el.html(TPL.render(template, attrs));
             this.$el.find('img[data-src]').addBack('img[data-src]').each(function() {
                 Amour.loadImage($(this), $(this).data('src'));
             });
