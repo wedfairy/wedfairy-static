@@ -87,19 +87,29 @@
      * Models and Views
      */
     
-    var TPL = Amour.TPL = {};
-    TPL.render = function(template, attrs) {
-        var template = template || '';
-        var attrs = attrs || {};
-        if (window.Handlebars) {
+    if (window.Handlebars) {
+        Amour.TPL = Handlebars;
+        Handlebars.render = function(template, attrs) {
+            var template = template || '';
+            var attrs = attrs || {};
             var compiledTemplate = Handlebars.compile(template);
             return compiledTemplate(attrs);
-        } else if (window.Mustache) {
-            return Mustache.render(template, attrs);
-        } else {
-            return template;
         }
+        Handlebars.registerHelper('eq', function(a, b, options) {
+            return a == b ? options.fn(this) : options.inverse(this);
+        });
+        Handlebars.registerHelper('list', function(context, options) {
+            var context = (context && typeof context === 'object') ? context : [context];
+            return Handlebars.helpers.each.call(this, context, options);
+        });
+    } else if (window.Mustache) {
+        Amour.TPL = Mustache;
+    } else {
+        Amour.TPL = {
+            render: function(template, attrs) { return template; }
+        };
     }
+    var TPL = Amour.TPL;
     
     var Model = Amour.Model = Backbone.Model.extend({
         initialize: function() {
