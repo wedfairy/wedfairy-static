@@ -99,8 +99,12 @@
             return a == b ? options.fn(this) : options.inverse(this);
         });
         Handlebars.registerHelper('list', function(context, options) {
-            var context = (context && typeof context === 'object') ? context : [context];
-            return Handlebars.helpers.each.call(this, context, options);
+            if (!Handlebars.Utils.isEmpty(context)) {
+                var context = (typeof context === 'object') ? context : [context];
+                return Handlebars.helpers.each.call(this, context, options);
+            } else {
+                return options.inverse(this);
+            }
         });
     } else if (window.Mustache) {
         Amour.TPL = Mustache;
