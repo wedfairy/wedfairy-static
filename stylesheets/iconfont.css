@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: 'iconfont';
-  src: url('../fonts/iconfont0826/iconfont.eot'); /* IE9*/
-  src: url('../fonts/iconfont0826/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../fonts/iconfont0826/iconfont.woff') format('woff'), /* chrome、firefox */
-  url('../fonts/iconfont0826/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('../fonts/iconfont0826/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('../fonts/iconfont0831/iconfont.eot'); /* IE9*/
+  src: url('../fonts/iconfont0831/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont0831/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('../fonts/iconfont0831/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('../fonts/iconfont0831/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 /* core */
@@ -104,7 +104,6 @@
 .icon-function:before { content: "\e635"; }
 .icon-picture-add:before { content: "\e615"; }
 .icon-list-ol:before { content: "\e60e"; }
-.icon-text:before { content: "\e61e"; }
 .icon-location-arrow:before { content: "\e60f"; }
 .icon-share-square:before { content: "\e60c"; }
 .icon-woman:before { content: "\e610"; }
@@ -126,7 +125,7 @@
 .icon-arrow-up:before { content: "\e62f"; }
 .icon-angle-down:before { content: "\e631"; }
 .icon-tips:before { content: "\e61b"; }
-.icon-user:before { content: "\e620"; }
+.icon-user-circle:before { content: "\e620"; }
 .icon-edit:before { content: "\e632"; }
 .icon-forbidden:before { content: "\e637"; }
 .icon-location:before { content: "\e61f"; }
@@ -137,13 +136,19 @@
 .icon-share:before { content: "\e616"; }
 .icon-comment:before { content: "\e622"; }
 .icon-camera:before { content: "\e618"; }
+.icon-text:before { content: "\e621"; }
 .icon-brand-ba:before { content: "\e639"; }
 .icon-brand-yin:before { content: "\e63a"; }
 .icon-brand-he:before { content: "\e63b"; }
 .icon-list-edit:before { content: "\e628"; }
+.icon-quote-left:before { content: "\e633"; }
+.icon-quote-right:before { content: "\e638"; }
 .icon-logo:before { content: "\e612"; }
 .icon-comment-alt:before { content: "\e623"; }
 .icon-ellipsis-h-o:before { content: "\e629"; }
 .icon-like:before { content: "\e630"; }
 .icon-like-o:before { content: "\e62b"; }
+.icon-user:before { content: "\e63c"; }
+.icon-sliders:before { content: "\e63d"; }
+.icon-reorder:before { content: "\e63e"; }
 .icon-picture:before { content: "\e62a"; }
