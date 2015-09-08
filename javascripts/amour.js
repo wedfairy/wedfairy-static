@@ -25,7 +25,7 @@
     var Amour = window.Amour = {
         version: '1.0',
         APIRoot: $('meta[name="APIRoot"]').attr('content'),
-        CDNURL: $('meta[name="CDNURL"]').attr('content')
+        StaticURL: $('meta[name="StaticURL"]').attr('content')
     };
 
     (function initFastclick() {
@@ -296,7 +296,7 @@
     
     Amour.imageFullpath = function(src, options) {
         options = options || {};
-        var fullpath = /^http:\/\//.test(src) ? src : Amour.CDNURL + src;
+        var fullpath = /^http:\/\//.test(src) ? src : Amour.StaticURL + src;
         return options.optimize === false ? fullpath: Amour.optimizeImage(fullpath);
     };
     
@@ -324,7 +324,6 @@
             options.error && options.error();
             return;
         }
-        //el.css('background-image', 'url(' + Amour.CDNURL + 'images/loading.gif' + ')');
         var image = new Image(), image_src = Amour.imageFullpath(src, options);
         image.onload = function() {
             el.removeClass('img-loading');
