@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: 'iconfont';
-  src: url('../fonts/iconfont0901/iconfont.eot'); /* IE9*/
-  src: url('../fonts/iconfont0901/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../fonts/iconfont0901/iconfont.woff') format('woff'), /* chrome、firefox */
-  url('../fonts/iconfont0901/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('../fonts/iconfont0901/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('../fonts/iconfont0909/iconfont.eot'); /* IE9*/
+  src: url('../fonts/iconfont0909/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont0909/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('../fonts/iconfont0909/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('../fonts/iconfont0909/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 /* core */
@@ -149,16 +149,31 @@
 .icon-like:before { content: "\e630"; }
 .icon-like-o:before { content: "\e62b"; }
 .icon-user:before { content: "\e63c"; }
+.icon-envelope:before { content: "\e64d"; }
+.icon-exit:before { content: "\e64e"; }
 .icon-edit-list-ul:before { content: "\e606"; }
+.icon-eye:before { content: "\e64f"; }
 .icon-pencil-o:before { content: "\e649"; }
 .icon-sliders:before { content: "\e63d"; }
+.icon-shop-o:before { content: "\e64b"; }
 .icon-delete:before { content: "\e641"; }
 .icon-pencil-o-line:before { content: "\e64a"; }
 .icon-color-palette:before { content: "\e64c"; }
 .icon-compress:before { content: "\e61e"; }
 .icon-expand:before { content: "\e63f"; }
+.icon-crop:before { content: "\e651"; }
+.icon-tint:before { content: "\e652"; }
 .icon-share-o:before { content: "\e648"; }
+.icon-section-timeline:before { content: "\e653"; }
+.icon-section-people:before { content: "\e654"; }
+.icon-section-gallery:before { content: "\e655"; }
+.icon-section-photo:before { content: "\e656"; }
+.icon-section-article:before { content: "\e657"; }
+.icon-section-voice:before { content: "\e658"; }
 .icon-reorder:before { content: "\e63e"; }
+.icon-question-circle:before { content: "\e659"; }
+.icon-dialog-plus:before { content: "\e65a"; }
+.icon-dialog-times:before { content: "\e65b"; }
 .icon-picture:before { content: "\e62a"; }
 .icon-pencil-add:before { content: "\e642"; }
 .icon-comment:before { content: "\e643"; }
