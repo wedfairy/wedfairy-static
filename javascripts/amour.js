@@ -116,8 +116,9 @@
     var TPL = Amour.TPL;
     
     var Model = Amour.Model = Backbone.Model.extend({
-        initialize: function() {
-            if (this.initModel) this.initModel();
+        initialize: function(attributes, options) {
+            options = options || {};
+            if (this.initModel) this.initModel(options);
         },
         url: function() {
             var origUrl = Backbone.Model.prototype.url.call(this);
@@ -127,8 +128,9 @@
     
     var Collection = Amour.Collection = Backbone.Collection.extend({
         model: Model,
-        initialize: function() {
-            if (this.initCollection) this.initCollection();
+        initialize: function(models, options) {
+            options = options || {};
+            if (this.initCollection) this.initCollection(options);
         },
         parse: function(response) {
             if (response.results != null) {
@@ -367,7 +369,7 @@
     Amour.Models = {};
     Amour.Collections = {};
     
-    var dataMixins = {
+    var dataMixins = Amour.dataMixins = {
         getData: function(key, root) {
             var data = root || this.get('data');
             if (key == null) {
