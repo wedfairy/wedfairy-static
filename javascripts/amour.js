@@ -409,6 +409,8 @@
         }
     };
     
+    // Stories
+
     Amour.Models.StoryEvent = Amour.Model.extend({
         urlRoot: Amour.APIRoot + 'sites/storyevent/'
     }).extend(dataMixins);
@@ -444,6 +446,56 @@
         url: Amour.APIRoot + 'sites/story/',
         model: Amour.Models.Story
     });
+
+    // Themes
+    
+    Amour.Models.ThemeTuning = Amour.Model.extend({
+        urlRoot: null
+    }).extend(dataMixins);
+    
+    Amour.Collections.ThemeTunings = Amour.Collection.extend({
+        url: null,
+        model: Amour.Models.StoryEvent
+    });
+
+    Amour.Models.Theme = Amour.Model.extend({
+        idAttribute: 'name',
+        urlRoot: Amour.APIRoot + 'sites/theme/',
+        initModel: function() {
+            this.tunings = new Amour.Collections.ThemeTunings(this.get('tunings'));
+            this.on('change:tunings', function() {
+                this.tunings.set(this.get('sections'));
+            }, this);
+        },
+        getTunings: function(section, category) {
+            var tunings = this.tunings.where({ section: section, category: category });
+            if (_.isEmpty(tunings)) {
+                tunings = this.tunings.where({ section: 'all', category: category });
+            }
+            return _.invoke(tunings, 'toJSON');
+        },
+        getDefault: function(section, category) {
+            var tuning = this.tunings.findWhere({ section: section, category: category, is_default: true });
+            if (!tuning) {
+                tuning = this.tunings.findWhere({ section: 'all', category: category, is_default: true });
+            }
+            return tuning ? tuning.get('name') : '';
+        },
+        validateTuning: function(section, category, name) {
+            var tuning = this.tunings.findWhere({ section: section, category: category, name: name });
+            if (!tuning) {
+                tuning = this.tunings.findWhere({ section: 'all', category: category, name: name });
+            }
+            return !!tuning;
+        }
+    }).extend(dataMixins);
+    
+    Amour.Collections.Themes = Amour.Collection.extend({
+        url: Amour.APIRoot + 'sites/theme/',
+        model: Amour.Models.StoryEvent
+    });
+    
+    // Schemas
     
     Amour.Models.Section = Amour.Model.extend({
         urlRoot: null
@@ -472,6 +524,8 @@
         url: Amour.APIRoot + 'sites/schema/',
         model: Amour.Models.Schema
     });
+    
+    // User
     
     Amour.Models.User = Amour.Model.extend({
         urlRoot: Amour.APIRoot + 'users/user/',
