@@ -469,23 +469,23 @@
         },
         getTunings: function(section, category) {
             var tunings = this.tunings.where({ section: section, category: category });
-            if (_.isEmpty(tunings)) {
+            if (_.isEmpty(tunings) && section != 'viewport') {
                 tunings = this.tunings.where({ section: 'all', category: category });
             }
             return _.invoke(tunings, 'toJSON');
         },
         getDefault: function(section, category) {
-            var tuning = this.tunings.findWhere({ section: section, category: category, is_default: true });
-            if (!tuning) {
-                tuning = this.tunings.findWhere({ section: 'all', category: category, is_default: true });
-            }
-            return tuning ? tuning.get('name') : '';
+            var tunings = this.getTunings(section, category);
+            var tuning = _.findWhere(tunings, {
+                is_default: true
+            });
+            return tuning ? tuning.name : '';
         },
         validateTuning: function(section, category, name) {
-            var tuning = this.tunings.findWhere({ section: section, category: category, name: name });
-            if (!tuning) {
-                tuning = this.tunings.findWhere({ section: 'all', category: category, name: name });
-            }
+            var tunings = this.getTunings(section, category);
+            var tuning = _.findWhere(tunings, {
+                name: name
+            });
             return !!tuning;
         }
     }).extend(dataMixins);
