@@ -371,7 +371,7 @@
     
     var dataMixins = Amour.dataMixins = {
         getData: function(key, root) {
-            var data = root || this.get('data');
+            var data = root || _.clone(this.get('data'));
             if (key == null) {
                 return data;
             } else if (!_.isString(key) || !_.isObject(data)) {
