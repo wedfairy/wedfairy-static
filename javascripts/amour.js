@@ -483,6 +483,7 @@
         },
         validateTuning: function(section, category, name) {
             var tunings = this.getTunings(section, category);
+            if (_.isEmpty(tunings)) return true;
             var tuning = _.findWhere(tunings, {
                 name: name
             });
