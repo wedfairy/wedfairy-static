@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>八音盒</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta http-equiv="cleartype" content="on">
+
+    <link rel="shortcut icon" sizes="196x196" href="images/logo-transparent-196.png">
+    <link rel="shortcut icon" href="images/logo-transparent-128.png">
+
+    <link rel="stylesheet" href="stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome.css">
+
+    <style>
+    body {
+        font-family:Avenir, "Helvetica Neue", Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei", "Wenquanyi Micro Hei", sans-serif;
+    }
+    @-webkit-keyframes wave {
+        0% {
+            background-position:0px 0px
+        }
+        50% {
+            background-position:-50px 0px
+        }
+        100% {
+            background-position:-100px 0px
+        }
+    }
+    @-moz-keyframes wave {
+        0% {
+            background-position:0px 0px
+        }
+        50% {
+            background-position:-50px 0px
+        }
+        100% {
+            background-position:-100px 0px
+        }
+    }
+    @keyframes wave {
+        0% {
+            background-position:0px 0px
+        }
+        50% {
+            background-position:-50px 0px
+        }
+        100% {
+            background-position:-100px 0px
+        }
+    }
+    @-webkit-keyframes whale {
+        0% {
+            -webkit-transform:rotate(0deg)
+        }
+        25% {
+            -webkit-transform:rotate(-10deg)
+        }
+        50% {
+            -webkit-transform:rotate(0deg)
+        }
+        75% {
+            -webkit-transform:rotate(10deg)
+        }
+        100% {
+            -webkit-transform:rotate(0deg)
+        }
+    }
+    @-moz-keyframes whale {
+        0% {
+            -moz-transform:rotate(0deg)
+        }
+        25% {
+            -moz-transform:rotate(-10deg)
+        }
+        50% {
+            -moz-transform:rotate(0deg)
+        }
+        75% {
+            -moz-transform:rotate(10deg)
+        }
+        100% {
+            -moz-transform:rotate(0deg)
+        }
+    }
+    @keyframes whale {
+        0% {
+            -webkit-transform:rotate(0deg);
+            -moz-transform:rotate(0deg);
+            -ms-transform:rotate(0deg);
+            -o-transform:rotate(0deg);
+            transform:rotate(0deg)
+        }
+        25% {
+            -webkit-transform:rotate(-10deg);
+            -moz-transform:rotate(-10deg);
+            -ms-transform:rotate(-10deg);
+            -o-transform:rotate(-10deg);
+            transform:rotate(-10deg)
+        }
+        50% {
+            -webkit-transform:rotate(0deg);
+            -moz-transform:rotate(0deg);
+            -ms-transform:rotate(0deg);
+            -o-transform:rotate(0deg);
+            transform:rotate(0deg)
+        }
+        75% {
+            -webkit-transform:rotate(10deg);
+            -moz-transform:rotate(10deg);
+            -ms-transform:rotate(10deg);
+            -o-transform:rotate(10deg);
+            transform:rotate(10deg)
+        }
+        100% {
+            -webkit-transform:rotate(0deg);
+            -moz-transform:rotate(0deg);
+            -ms-transform:rotate(0deg);
+            -o-transform:rotate(0deg);
+            transform:rotate(0deg)
+        }
+    }
+    body {
+        background-color:#f76d7b;
+        color:#fff
+    }
+    body>header {
+        padding-top:80px
+    }
+    body>header h4 {
+        margin:30px auto
+    }
+    body>header .btn {
+        padding:8px 20px;
+        background-color:#d13b49;
+        border-color:transparent;
+    }
+    body>header .btn:hover, body>header .btn:focus, body>header .btn:active, body>header .btn:focus:active {
+        background-color:#c42e3c;
+        border-color:transparent;
+    }
+    body>footer {
+        position:fixed;
+        top:auto;
+        right:0;
+        bottom:0;
+        left:0
+    }
+    body>footer a {
+        display:inline-block;
+        margin:0 5px;
+        font-size:30px;
+        color:#afc9d3
+    }
+    body>footer a:hover, body>footer a:focus, body>footer a:active {
+        color:#fff
+    }
+    body>footer .copyright {
+        font-size:0.9em
+    }
+    .waves {
+        position:fixed;
+        top:50%;
+        right:0;
+        bottom:0;
+        left:0;
+        background-color:#5f93a8
+    }
+    .wave {
+        background-repeat:repeat-x;
+        background-size:100px auto;
+        background-position:0px 0px;
+        height:100px;
+        margin-top:-50px;
+        -webkit-transform:translate3d(0, 0, 0);
+        -moz-transform:translate3d(0, 0, 0);
+        -ms-transform:translate3d(0, 0, 0);
+        -o-transform:translate3d(0, 0, 0);
+        transform:translate3d(0, 0, 0)
+    }
+    .wave:nth-child(1) {
+        background-image:url("http://cdn.story.wedfairy.com/assets/images/404/wave1.png");
+        -webkit-animation:wave 4s linear infinite;
+        -moz-animation:wave 4s linear infinite;
+        animation:wave 4s linear infinite
+    }
+    .wave:nth-child(2) {
+        background-image:url("http://cdn.story.wedfairy.com/assets/images/404/wave2.png");
+        -webkit-animation:wave 4s linear infinite reverse;
+        -moz-animation:wave 4s linear infinite reverse;
+        animation:wave 4s linear infinite reverse
+    }
+    .wave:nth-child(3) {
+        background-image:url("http://cdn.story.wedfairy.com/assets/images/404/wave3.png");
+        -webkit-animation:wave 2s linear infinite;
+        -moz-animation:wave 2s linear infinite;
+        animation:wave 2s linear infinite
+    }
+    .wave:nth-child(5) {
+        background-image:url("http://cdn.story.wedfairy.com/assets/images/404/wave4.png");
+        -webkit-animation:wave 1s linear infinite reverse;
+        -moz-animation:wave 1s linear infinite reverse;
+        animation:wave 1s linear infinite reverse
+    }
+    .wave:nth-child(6) {
+        background-image:url("http://cdn.story.wedfairy.com/assets/images/404/wave5.png");
+        -webkit-animation:wave 1s linear infinite;
+        -moz-animation:wave 1s linear infinite;
+        animation:wave 1s linear infinite
+    }
+    .whale {
+        background:url("http://cdn.story.wedfairy.com/assets/images/404/whale.png") no-repeat center;
+        background-size:contain;
+        height:240px;
+        margin-top:-240px;
+        -webkit-animation:whale 2s linear infinite;
+        -moz-animation:whale 2s linear infinite;
+        animation:whale 2s linear infinite
+    }
+    @media (max-width: 400px) {
+        .waves {
+            top:55%
+        }
+        .wave {
+            background-size:50px auto;
+            height:50px;
+            margin-top:-25px
+        }
+        .whale {
+            height:120px;
+            margin-top:-120px
+        }
+        body>header {
+            padding-top:30px
+        }
+    }
+    </style>
+
+    <script src="javascripts/vendor/modernizr-2.7.1.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="waves">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="whale"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+</div>
+<header class="container-fluid text-center">
+    <h1>服务器有点问题</h1>
+    <h4>不如稍等片刻！<span id="seconds">6</span> 秒后自动刷新</h4>
+    <a class="btn btn-primary" href="javascript:location.reload()">立即刷新</a>
+</header>
+<footer class="footer text-center">
+    <p class="copyright">© 八音盒 2015</p>
+</footer>
+
+<script>
+    (function refresh() {
+        var el = document.getElementById('seconds')
+        var s = +el.innerText;
+        el.innerText = (s - 1);
+        if (s == 1) {
+            location.reload();
+        } else {
+            setTimeout(refresh, 1000);
+        }
+    })();
+</script>
+
+</body>
+
+</html>
