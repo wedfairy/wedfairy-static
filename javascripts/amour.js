@@ -310,13 +310,16 @@
         }
         var image = new Image(), image_src = Amour.imageFullpath(src, options);
         image.onload = function() {
+            img.removeClass('img-loading');
             img.attr('src', image_src);
             options.success && options.success();
         };
         image.onerror = function() {
-            img.attr('src', null);
+            img.removeClass('img-loading').addClass('img-broken');
             options.error && options.error();
         };
+        img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+        img.addClass('img-loading');
         image.src = image_src;
     };
     
@@ -334,7 +337,6 @@
         };
         image.onerror = function() {
             el.removeClass('img-loading').addClass('img-broken');
-            //el.css('background-image', null);
             options.error && options.error();
         };
         el.addClass('img-loading');
