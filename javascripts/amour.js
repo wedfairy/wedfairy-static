@@ -471,7 +471,7 @@
         },
         getTunings: function(section, category) {
             var tunings = this.tunings.where({ section: section, category: category });
-            var genericSections = ['article', 'photo', 'timeline', 'gallery', 'people'];
+            var genericSections = ['weddinghero', 'article', 'photo', 'timeline', 'gallery', 'people'];
             if (_.isEmpty(tunings) && _.contains(genericSections, section)) {
                 tunings = this.tunings.where({ section: 'all', category: category });
             }
