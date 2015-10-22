@@ -337,6 +337,7 @@
     Amour.loadBgImage = function(el, src, options) {
         options = options || {};
         if (!src) {
+            el.css('background-image', 'none');
             options.error && options.error();
             return;
         }
