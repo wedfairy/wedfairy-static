@@ -17,6 +17,12 @@
     if (!window.location.origin) {
         window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
     }
+
+    window.location.query = _.chain(window.location.search.substr(1).split('&'))
+                             .compact().map(function(item) {
+                                var s = item.split('=');
+                                return _.object([s[0]], [s[1]]);
+                             }).compact().value();
     
     /*
      * Amour
