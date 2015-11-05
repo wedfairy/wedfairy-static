@@ -330,7 +330,7 @@
             options.error && options.error();
         };
         img.attr('src', 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-        img.addClass('img-loading');
+        img.removeClass('img-broken').addClass('img-loading');
         image.src = image_src;
     };
     
@@ -355,7 +355,7 @@
             el.removeClass('img-loading').addClass('img-broken');
             options.error && options.error();
         };
-        el.addClass('img-loading');
+        el.removeClass('img-broken').addClass('img-loading');
         image.src = image_src;
     };
     
