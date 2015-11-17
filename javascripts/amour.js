@@ -1,9 +1,9 @@
 (function() {
-    
+
     if (navigator.userAgent.match(/MQQBrowser/)) {
         Backbone.emulateHTTP = true;
     }
-    
+
     if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
         var msViewportStyle = document.createElement("style");
         msViewportStyle.appendChild(
@@ -13,7 +13,7 @@
         );
         document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
     }
-    
+
     if (!window.location.origin) {
         window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port: '');
     }
@@ -28,11 +28,11 @@
         });
         window.location.query = _.object(keys, vals);
     })();
-    
+
     /*
      * Amour
      */
-    
+
     var Amour = window.Amour = {
         version: '1.0',
         APIRoot: $('meta[name="APIRoot"]').attr('content'),
@@ -67,7 +67,7 @@
     (function initHybridApp() {
         Amour.isHybrid = false;
         var checkHybrid = function() {
-            Amour.isHybrid = typeof webkit != 'undefined' && 
+            Amour.isHybrid = typeof webkit != 'undefined' &&
                              typeof webkit.messageHandlers != 'undefined';
         };
         document.addEventListener("hybriddeviceready", checkHybrid, false);
@@ -79,25 +79,25 @@
             handler && handler.postMessage(message);
         };
     })();
-    
+
     /*
      * Events and Routers
      */
-    
+
     // Allow the `Amour` object to serve as a global event bus
     _.extend(Amour, Backbone.Events);
-    
+
     var EventAggregator = Amour.EventAggregator = (function() {
         var EA = function() {};
         EA.extend = Backbone.Model.extend;
         _.extend(EA.prototype, Backbone.Events);
         return EA;
     })();
-    
+
     /*
      * Models and Views
      */
-    
+
     if (window.Handlebars) {
         Amour.TPL = Handlebars;
         Handlebars.render = function(template, attrs) {
@@ -125,7 +125,7 @@
         };
     }
     var TPL = Amour.TPL;
-    
+
     var Model = Amour.Model = Backbone.Model.extend({
         initialize: function(attributes, options) {
             options = options || {};
@@ -136,7 +136,7 @@
             return origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');
         }
     });
-    
+
     var Collection = Amour.Collection = Backbone.Collection.extend({
         model: Model,
         initialize: function(models, options) {
@@ -168,7 +168,7 @@
             }
         }
     });
-    
+
     var View = Amour.View = Backbone.View.extend({
         initialize: function(options) {
             if (this.initView) this.initView(options || {});
@@ -190,7 +190,7 @@
             return _.extend(target, _.result(this, 'templateHelpers'));
         }
     });
-    
+
     var ModelView = Amour.ModelView = View.extend({
         listenToModel: function() {
             this.listenTo(this.model, 'change', this.render);
@@ -216,7 +216,7 @@
             return this.renderTemplate(this.serializeData());
         }
     });
-    
+
     var CollectionView = Amour.CollectionView = View.extend({
         ModelView: ModelView,
         listenToCollection: function() {
@@ -265,11 +265,11 @@
             return this;
         }
     });
-    
+
     /*
      * Utility Functions
      */
-    
+
     Amour.storage = new function() {
         this.set = function(key, val) { localStorage.setItem(key, val); };
         this.get = function(key) { return localStorage.getItem(key); };
@@ -284,11 +284,11 @@
             this.del = function(key) { this.vault[key] = null; };
         }
     };
-    
+
     Amour.openWindow = function(link) {
         window.open(link, '_self', 'location=no');
     };
-    
+
     Amour.optimizeImage = function(fullpath) {
         if (/\?imageMogr2\/|\?imageView2\//.test(fullpath)) {
             return fullpath;
@@ -306,13 +306,13 @@
         }
         return optimpath;
     };
-    
+
     Amour.imageFullpath = function(src, options) {
         options = options || {};
         var fullpath = /^http:\/\//.test(src) ? src : Amour.StaticURL + src;
         return options.optimize === false ? fullpath: Amour.optimizeImage(fullpath);
     };
-    
+
     Amour.loadImage = function(img, src, options) {
         options = options || {};
         if (!src) {
@@ -333,7 +333,7 @@
         img.removeClass('img-broken').addClass('img-loading');
         image.src = image_src;
     };
-    
+
     Amour.loadBgImage = function(el, src, options) {
         options = options || {};
         if (!src) {
@@ -358,7 +358,7 @@
         el.removeClass('img-broken').addClass('img-loading');
         image.src = image_src;
     };
-    
+
     Amour.fillImages = function() {
         var count = 1 + $('img[data-src]').length + $('.img[data-bg-src]').length;
         var imageLoad = _.after(count, function() {
@@ -379,14 +379,14 @@
             });
         });
     };
-    
+
     /*
      * Models and Collections API
      */
-    
+
     Amour.Models = {};
     Amour.Collections = {};
-    
+
     var dataMixins = Amour.dataMixins = {
         getData: function(key, root) {
             var data = root || _.clone(this.get('data'));
@@ -426,18 +426,18 @@
             }
         }
     };
-    
+
     // Stories
 
     Amour.Models.StoryEvent = Amour.Model.extend({
         urlRoot: Amour.APIRoot + 'sites/storyevent/'
     }).extend(dataMixins);
-    
+
     Amour.Collections.StoryEvents = Amour.Collection.extend({
         url: Amour.APIRoot + 'sites/storyevent/',
         model: Amour.Models.StoryEvent
     });
-    
+
     Amour.Models.Story = Amour.Model.extend({
         urlRoot: Amour.APIRoot + 'sites/story/',
         initModel: function() {
@@ -459,18 +459,18 @@
             storyEvent.save();
         }
     }).extend(dataMixins);
-    
+
     Amour.Collections.Stories = Amour.Collection.extend({
         url: Amour.APIRoot + 'sites/story/',
         model: Amour.Models.Story
     });
 
     // Themes
-    
+
     Amour.Models.ThemeTuning = Amour.Model.extend({
         urlRoot: null
     }).extend(dataMixins);
-    
+
     Amour.Collections.ThemeTunings = Amour.Collection.extend({
         url: null,
         model: Amour.Models.StoryEvent
@@ -502,23 +502,23 @@
             return tuning ? tuning.name : name;
         }
     }).extend(dataMixins);
-    
+
     Amour.Collections.Themes = Amour.Collection.extend({
         url: Amour.APIRoot + 'sites/theme/',
         model: Amour.Models.StoryEvent
     });
-    
+
     // Schemas
-    
+
     Amour.Models.Section = Amour.Model.extend({
         urlRoot: null
     }).extend(dataMixins);
-    
+
     Amour.Collections.Sections = Amour.Collection.extend({
         url: null,
         model: Amour.Models.StoryEvent
     });
-    
+
     Amour.Models.Schema = Amour.Model.extend({
         idAttribute: 'name',
         urlRoot: Amour.APIRoot + 'sites/schema/',
@@ -532,14 +532,14 @@
             return this.sections.findWhere({name: name});
         }
     }).extend(dataMixins);
-    
+
     Amour.Collections.Schemas = Amour.Collection.extend({
         url: Amour.APIRoot + 'sites/schema/',
         model: Amour.Models.Schema
     });
-    
+
     // User
-    
+
     Amour.Models.User = Amour.Model.extend({
         urlRoot: Amour.APIRoot + 'users/user/',
         initModel: function() {
@@ -565,11 +565,12 @@
             this.clear().set(auth);
             options = options || {};
             options.url = Amour.APIRoot + 'api-token-auth/';
+            var silent = options.silent;
             var success = options.success;
             options.success = function(model, response, options) {
                 Amour.TokenAuth.set(response.token);
                 if (success) success(model, response, options);
-                model.trigger('login');
+                if (!silent) model.trigger('login');
             };
             this.save({}, options);
         },
@@ -582,11 +583,11 @@
             this.save({}, options);
         }
     });
-    
+
     /*
      * Initializations
      */
-    
+
     var initSync = function () {
         var authToken = Amour.storage.get('auth-token');
         var originalSync = Backbone.sync;
@@ -612,7 +613,7 @@
             }
         };
     };
-    
+
     var initAjaxEvents = function () {
         _.extend((Amour.ajax = {}), Backbone.Events);
         $(document).ajaxStart(function () {
@@ -634,11 +635,11 @@
             }
         });
     };
-    
+
     var initErrorReporting = function() {
         if (window['amour-disable-error-reporting']) return;
         var ClientError = Amour.Model.extend({
-            urlRoot: Amour.APIRoot + 'clients/error/' 
+            urlRoot: Amour.APIRoot + 'clients/error/'
         });
         window.onerror = function(message) {
             try {
@@ -654,16 +655,16 @@
             } catch (e) {}
         };
     };
-    
+
     if (!window['amour-lazy-loading-images']) {
         Amour.fillImages();
     }
-    
-    /* 
+
+    /*
      * Export
      */
     initSync();
     initAjaxEvents();
     initErrorReporting();
-    
+
 })();
