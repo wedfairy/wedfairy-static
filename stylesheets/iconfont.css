@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: 'iconfont';
-  src: url('../fonts/iconfont0910/iconfont.eot'); /* IE9*/
-  src: url('../fonts/iconfont0910/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('../fonts/iconfont0910/iconfont.woff') format('woff'), /* chrome、firefox */
-  url('../fonts/iconfont0910/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url('../fonts/iconfont0910/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('../fonts/iconfont1117/iconfont.eot'); /* IE9*/
+  src: url('../fonts/iconfont1117/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('../fonts/iconfont1117/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('../fonts/iconfont1117/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('../fonts/iconfont1117/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 /* core */
@@ -90,14 +90,14 @@
 
 /* icons */
 
-.icon-music:before { content: "\e61a"; }
 .icon-focus:before { content: "\e607"; }
+.icon-pencil-square:before { content: "\e604"; }
 .icon-play:before { content: "\e602"; }
 .icon-upload:before { content: "\e640"; }
 .icon-plane:before { content: "\e603"; }
 .icon-man:before { content: "\e605"; }
 .icon-ellipsis-h:before { content: "\e61d"; }
-.icon-setting:before { content: "\e608"; }
+.icon-qrcode:before { content: "\e65e"; }
 .icon-equalizer:before { content: "\e60a"; }
 .icon-display:before { content: "\e60d"; }
 .icon-add-dash:before { content: "\e634"; }
@@ -107,6 +107,7 @@
 .icon-location-arrow:before { content: "\e60f"; }
 .icon-share-square:before { content: "\e60c"; }
 .icon-woman:before { content: "\e610"; }
+.icon-map-marker:before { content: "\e65f"; }
 .icon-person:before { content: "\e613"; }
 .icon-tag:before { content: "\e619"; }
 .icon-inspiration:before { content: "\e609"; }
@@ -124,6 +125,7 @@
 .icon-arrow-right:before { content: "\e62e"; }
 .icon-arrow-up:before { content: "\e62f"; }
 .icon-angle-down:before { content: "\e631"; }
+.icon-pocket:before { content: "\e660"; }
 .icon-tips:before { content: "\e61b"; }
 .icon-user-circle:before { content: "\e620"; }
 .icon-edit:before { content: "\e632"; }
@@ -132,15 +134,17 @@
 .icon-location:before { content: "\e61f"; }
 .icon-map:before { content: "\e614"; }
 .icon-check-corner:before { content: "\e636"; }
-.icon-home:before { content: "\e61c"; }
 .icon-share-alt:before { content: "\e616"; }
 .icon-comment-alt:before { content: "\e622"; }
 .icon-camera:before { content: "\e618"; }
 .icon-text:before { content: "\e621"; }
+.icon-volume-off:before { content: "\e661"; }
 .icon-brand-ba:before { content: "\e639"; }
 .icon-brand-yin:before { content: "\e63a"; }
 .icon-brand-he:before { content: "\e63b"; }
 .icon-edit-list-ol:before { content: "\e628"; }
+.icon-voice:before { content: "\e662"; }
+.icon-volume-up:before { content: "\e663"; }
 .icon-quote-left:before { content: "\e633"; }
 .icon-quote-right:before { content: "\e638"; }
 .icon-logo:before { content: "\e612"; }
@@ -150,6 +154,7 @@
 .icon-like:before { content: "\e630"; }
 .icon-like-o:before { content: "\e62b"; }
 .icon-user:before { content: "\e63c"; }
+.icon-lock:before { content: "\e608"; }
 .icon-envelope:before { content: "\e64d"; }
 .icon-exit:before { content: "\e64e"; }
 .icon-edit-list-ul:before { content: "\e606"; }
@@ -176,6 +181,8 @@
 .icon-question-circle:before { content: "\e659"; }
 .icon-dialog-plus:before { content: "\e65a"; }
 .icon-dialog-times:before { content: "\e65b"; }
+.icon-gallery:before { content: "\e664"; }
+.icon-ellipsis-v:before { content: "\e665"; }
 .icon-picture:before { content: "\e62a"; }
 .icon-pencil-add:before { content: "\e642"; }
 .icon-comment:before { content: "\e643"; }
@@ -183,3 +190,10 @@
 .icon-pencil:before { content: "\e645"; }
 .icon-share:before { content: "\e646"; }
 .icon-shop:before { content: "\e647"; }
+.icon-picture1:before { content: "\e666"; }
+.icon-bar-chart:before { content: "\e667"; }
+.icon-music:before { content: "\e668"; }
+.icon-home:before { content: "\e669"; }
+.icon-notification:before { content: "\e66a"; }
+.icon-setting:before { content: "\e66b"; }
+.icon-list-ul:before { content: "\e66c"; }
