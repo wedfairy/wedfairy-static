@@ -628,7 +628,7 @@
                 Amour.TokenAuth.clear();
                 Amour.ajax.trigger('unauthorized');
             } else if (jqxhr.status == 403) {
-                Amour.TokenAuth.clear();
+                // Amour.TokenAuth.clear();
                 Amour.ajax.trigger('forbidden');
             } else if (settings.type == 'GET' && jqxhr.statusText != 'abort') {
                 Amour.ajax.trigger('error');
