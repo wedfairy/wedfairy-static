@@ -624,7 +624,7 @@
         });
         $(document).ajaxError(function (event, jqxhr, settings, exception) {
             var response = jqxhr.responseJSON || {};
-            if (jqxhr.status == 401 || jqxhr.status == 499) {
+            if (jqxhr.status == 401) {
                 Amour.TokenAuth.clear();
                 Amour.ajax.trigger('unauthorized');
             } else if (jqxhr.status == 403) {
