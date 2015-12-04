@@ -561,6 +561,25 @@
                 password: password
             }, options);
         },
+        verifyLogin: function(success, context) {
+            var ctx = context || this;
+            if (this.isLoggedIn === true || this.isLoggedin === false) {
+                success && success.call(ctx, this.isLoggedIn);
+            } else {
+                var self = this;
+                this.fetch({
+                    global: false,
+                    success: function() {
+                        self.isLoggedIn = true;
+                        success && success.call(ctx, true);
+                    },
+                    error: function() {
+                        self.isLoggedIn = false;
+                        success && success.call(ctx, false);
+                    }
+                });
+            }
+        },
         login: function(auth, options) {
             this.clear().set(auth);
             options = options || {};
