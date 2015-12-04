@@ -553,21 +553,16 @@
         parse: function(response) {
             return _.isArray(response) ? response[0] : response;
         },
-        getUserInfo: function(callback, context) {
+        getUserInfo: function(success, error, context) {
             var ctx = context || this;
             if (this.isNew()) {
-                var self = this;
                 this.fetch({
                     global: false,
-                    success: function() {
-                        callback && callback.call(ctx, self.toJSON());
-                    },
-                    error: function() {
-                        callback && callback.call(ctx, null);
-                    }
+                    success: function() { success && success.call(ctx); },
+                    error: function() { error && error.call(ctx); }
                 });
             } else {
-                callback && callback.call(ctx, this.toJSON());
+                success && success.call(ctx);
             }
         },
         change_password: function(password, options) {
