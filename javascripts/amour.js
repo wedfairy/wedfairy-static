@@ -555,7 +555,9 @@
         },
         getUserInfo: function(success, error, context) {
             var ctx = context || this;
-            if (this.isNew()) {
+            if (!Amour.TokenAuth.get()) {
+                error && error.call(ctx);
+            } else if (this.isNew()) {
                 this.fetch({
                     global: false,
                     success: function() { success && success.call(ctx); },
