@@ -553,6 +553,23 @@
         parse: function(response) {
             return _.isArray(response) ? response[0] : response;
         },
+        getUserInfo: function(callback, context) {
+            var ctx = context || this;
+            if (this.isNew()) {
+                var self = this;
+                this.fetch({
+                    global: false,
+                    success: function() {
+                        callback && callback.call(ctx, self.toJSON());
+                    },
+                    error: function() {
+                        callback && callback.call(ctx, null);
+                    }
+                });
+            } else {
+                callback && callback.call(ctx, this.toJSON());
+            }
+        },
         change_password: function(password, options) {
             options = options || {};
             options.url = Amour.APIRoot + 'users/user/change_password/';
@@ -560,25 +577,6 @@
             this.save({
                 password: password
             }, options);
-        },
-        verifyLogin: function(success, context) {
-            var ctx = context || this;
-            if (this.isLoggedIn === true || this.isLoggedin === false) {
-                success && success.call(ctx, this.isLoggedIn);
-            } else {
-                var self = this;
-                this.fetch({
-                    global: false,
-                    success: function() {
-                        self.isLoggedIn = true;
-                        success && success.call(ctx, true);
-                    },
-                    error: function() {
-                        self.isLoggedIn = false;
-                        success && success.call(ctx, false);
-                    }
-                });
-            }
         },
         login: function(auth, options) {
             this.clear().set(auth);
