@@ -567,6 +567,20 @@
                 success && success.call(ctx);
             }
         },
+        verifyLogin: function(callback, context) {
+            var ctx = context || this;
+            if (!Amour.TokenAuth.get()) {
+                callback && callback.call(ctx, false);
+            } else if (this.isNew()) {
+                this.fetch({
+                    global: false,
+                    success: function() { callback && callback.call(ctx, true); },
+                    error: function() { callback && callback.call(ctx, false); }
+                });
+            } else {
+                callback && callback.call(ctx, true);
+            }
+        },
         change_password: function(password, options) {
             options = options || {};
             options.url = Amour.APIRoot + 'users/user/change_password/';
