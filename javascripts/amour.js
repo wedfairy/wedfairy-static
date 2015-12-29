@@ -336,11 +336,11 @@
 
     Amour.loadBgImage = function(el, src, options) {
         options = options || {};
-        if (!src) {
-            options.error && options.error();
-            return;
-        }
-        if (src == 'none') {
+        // if (!src) {
+        //     options.error && options.error();
+        //     return;
+        // }
+        if (!src || src == 'none') {
             el.css('background-image', 'none');
             options.success && options.success();
             return;
