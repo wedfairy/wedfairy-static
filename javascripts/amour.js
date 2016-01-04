@@ -380,6 +380,12 @@
         });
     };
 
+    Amour.encodeQueryString = function(data) {
+        return _.map(data, function(val, key) {
+            return key + '=' + encodeURIComponent(val);
+        }).join('&');
+    };
+
     /*
      * Models and Collections API
      */
