@@ -315,8 +315,10 @@
 
     Amour.loadImage = function(img, src, options) {
         options = options || {};
-        if (!src) {
-            options.error && options.error();
+        if (!src || src == 'none') {
+            img.removeClass('img-broken').removeClass('img-loading');
+            img.attr('src', null);
+            options.success && options.success();
             return;
         }
         var image = new Image(), image_src = Amour.imageFullpath(src, options);
@@ -336,11 +338,8 @@
 
     Amour.loadBgImage = function(el, src, options) {
         options = options || {};
-        // if (!src) {
-        //     options.error && options.error();
-        //     return;
-        // }
         if (!src || src == 'none') {
+            el.removeClass('img-broken').removeClass('img-loading');
             el.css('background-image', 'none');
             options.success && options.success();
             return;
