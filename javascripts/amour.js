@@ -625,7 +625,7 @@
         var authToken = Amour.storage.get('auth-token');
         var originalSync = Backbone.sync;
         Backbone.sync = function (method, model, options) {
-            _.extend((options.headers || (options.headers = {})), { 'Accept-Language': 'zh-CN' });
+            _.extend((options.headers || (options.headers = {})), { 'Accept-Language': 'zh-hans,zh-cn' });
             if (authToken) {
                 // _.extend((options.headers || (options.headers = {})), { 'Authorization': 'Token ' + authToken });
                 _.extend(options.headers, { 'Authorization': 'Token ' + authToken });
