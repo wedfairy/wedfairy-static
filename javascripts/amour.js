@@ -289,28 +289,38 @@
         window.open(link, '_self', 'location=no');
     };
 
-    Amour.optimizeImage = function(fullpath) {
-        if (/\?imageMogr2\/|\?imageView2\//.test(fullpath)) {
+    Amour.optimizeImage = function(fullpath, options) {
+        options = options || {};
+        var queries = [];
+        var optimQuery = {
+            wechat: 'imageView2/2/q/85/format/JPG',
+            thumbnail: 'imageView2/2/w/320/q/30',
+            small: 'imageView2/2/w/640',
+            large: 'imageView2/2/w/1280'
+        }
+        if (!/^http:\/\/up\.img\.8yinhe\.cn\//.test(fullpath)) {
             return fullpath;
         }
-        var optimQuery = {
-            wechat: '?imageView2/2/w/960/q/85/format/JPG',
-            small: '?imageView2/2/w/640/q/85',
-            large: '?imageView2/2/w/1280/q/85'
-        }
-        var optimpath = fullpath;
         if (/^http:\/\/up\.img\.8yinhe\.cn\/wechat\//.test(fullpath)) {
-            optimpath += optimQuery.wechat;
-        } else if (/^http:\/\/up\.img\.8yinhe\.cn\//.test(fullpath)) {
-            optimpath += Amour.isMobile ? optimQuery.small : optimQuery.large;
+            queries.push(optimQuery.wechat);
         }
-        return optimpath;
+        var optimpath = fullpath.split('?')[0];
+        var match = fullpath.match(/[?&](imageMogr2|imageView2)\/[^&]*/);
+        if (match) {
+            queries.push(match[0].slice(1));
+        }
+        var resize = options.resize || (Amour.isMobile ? 'small' : 'large');
+        queries.push(optimQuery[resize]);
+        if (queries.length) {
+            optimpath += '?' + queries.join('|');
+        }
+        return optimpath ;
     };
 
     Amour.imageFullpath = function(src, options) {
         options = options || {};
         var fullpath = /^http:\/\//.test(src) ? src : Amour.StaticURL + src;
-        return options.optimize === false ? fullpath: Amour.optimizeImage(fullpath);
+        return options.optimize === false ? fullpath: Amour.optimizeImage(fullpath, options);
     };
 
     Amour.loadImage = function(img, src, options) {
