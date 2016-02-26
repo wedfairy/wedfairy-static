@@ -354,6 +354,9 @@
             options.success && options.success();
             return;
         }
+        _.defaults(options, {
+            resize: el.attr('data-bg-optimize')
+        });
         var image = new Image(), image_src = Amour.imageFullpath(src, options);
         image.onload = function() {
             el.removeClass('img-loading');
