@@ -1,0 +1,119 @@
+
+/* path */
+
+@font-face {
+  font-family: "ift";
+  src: url("../fonts/ift/iconfont.eot"); /* IE9*/
+  src: url("../fonts/ift/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ift/iconfont.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ift/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ift/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
+}
+
+/* core */
+
+.ift {
+  display: inline-block;
+  font-family: ift !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-text-stroke-width: 0.2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* size */
+
+.ift-lg {
+  font-size: 1.33333em;
+  line-height: 0.75em;
+  /*vertical-align: -15%;*/
+}
+
+.ift-2x { font-size: 2em; }
+.ift-3x { font-size: 3em; }
+.ift-4x { font-size: 4em; }
+.ift-5x { font-size: 5em; }
+
+.ift-fw {
+  width: 1.28571em;
+  text-align: center;
+}
+
+/* spinning */
+
+.ift-spin {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(359deg); }
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(359deg); }
+}
+@-o-keyframes spin {
+  0% { -o-transform: rotate(0deg); }
+  100% { -o-transform: rotate(359deg); }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+/* icons */
+
+.ift-plus-circle:before { content: "\e600"; }
+.ift-chevron-down:before { content: "\e601"; }
+.ift-chevron-left:before { content: "\e602"; }
+.ift-chevron-right:before { content: "\e603"; }
+.ift-chevron-up:before { content: "\e604"; }
+.ift-home:before { content: "\e605"; }
+.ift-home-o:before { content: "\e606"; }
+.ift-bars-alt:before { content: "\e607"; }
+.ift-user:before { content: "\e608"; }
+.ift-user-o:before { content: "\e609"; }
+.ift-search:before { content: "\e60a"; }
+.ift-users:before { content: "\e60b"; }
+.ift-star:before { content: "\e60c"; }
+.ift-arrow-down:before { content: "\e60d"; }
+.ift-arrow-right:before { content: "\e60e"; }
+.ift-arrow-left:before { content: "\e60f"; }
+.ift-arrow-up:before { content: "\e610"; }
+.ift-angle-down:before { content: "\e611"; }
+.ift-angle-right:before { content: "\e612"; }
+.ift-angle-left:before { content: "\e613"; }
+.ift-angle-up:before { content: "\e614"; }
+.ift-flag:before { content: "\e615"; }
+.ift-bell:before { content: "\e616"; }
+.ift-comment:before { content: "\e617"; }
+.ift-share-square:before { content: "\e618"; }
+.ift-comment-square-o:before { content: "\e619"; }
+.ift-pencil-underline-o:before { content: "\e61a"; }
+.ift-heart-o:before { content: "\e61b"; }
+.ift-ellipsis-h:before { content: "\e61c"; }
+.ift-cog-o:before { content: "\e61d"; }
+.ift-share-square-o:before { content: "\e61e"; }
+.ift-eye-o:before { content: "\e61f"; }
+.ift-cube-o:before { content: "\e620"; }
+.ift-clone:before { content: "\e621"; }
+.ift-cloud-upload-o:before { content: "\e622"; }
+.ift-trash-o:before { content: "\e623"; }
+.ift-angle-circle-o-down:before { content: "\e624"; }
+.ift-angle-circle-o-left:before { content: "\e625"; }
+.ift-angle-circle-o-right:before { content: "\e626"; }
+.ift-angle-circle-o-up:before { content: "\e627"; }
+.ift-themes:before { content: "\e628"; }
+.ift-heart:before { content: "\e629"; }
