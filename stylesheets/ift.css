@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: "ift";
-  src: url("../fonts/ift0229/iconfont.eot"); /* IE9*/
-  src: url("../fonts/ift0229/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("../fonts/ift0229/iconfont.woff") format("woff"), /* chrome、firefox */
-  url("../fonts/ift0229/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("../fonts/ift0229/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
+  src: url("../fonts/ift0303/iconfont.eot"); /* IE9*/
+  src: url("../fonts/ift0303/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ift0303/iconfont.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ift0303/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ift0303/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
 }
 
 /* core */
@@ -117,3 +117,4 @@
 .ift-angle-circle-o-up:before { content: "\e627"; }
 .ift-themes:before { content: "\e628"; }
 .ift-heart:before { content: "\e629"; }
+.ift-check-circle:before { content: "\e62a"; }
