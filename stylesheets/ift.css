@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: "ift";
-  src: url("../fonts/ift0303/iconfont.eot"); /* IE9*/
-  src: url("../fonts/ift0303/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("../fonts/ift0303/iconfont.woff") format("woff"), /* chrome、firefox */
-  url("../fonts/ift0303/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("../fonts/ift0303/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
+  src: url("../fonts/ift0315/iconfont.eot"); /* IE9*/
+  src: url("../fonts/ift0315/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ift0315/iconfont.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ift0315/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ift0315/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
 }
 
 /* core */
@@ -118,3 +118,14 @@
 .ift-themes:before { content: "\e628"; }
 .ift-heart:before { content: "\e629"; }
 .ift-check-circle:before { content: "\e62a"; }
+.ift-pencil-o:before { content: "\e62b"; }
+.ift-times-circle:before { content: "\e62c"; }
+.ift-themes-o:before { content: "\e62d"; }
+.ift-shopping-bag-plus:before { content: "\e62e"; }
+.ift-book-o:before { content: "\e62f"; }
+.ift-cube:before { content: "\e630"; }
+.ift-sections:before { content: "\e631"; }
+.ift-pencil-underline:before { content: "\e632"; }
+.ift-color-palette:before { content: "\e633"; }
+.ift-music:before { content: "\e634"; }
+.ift-paint:before { content: "\e635"; }
