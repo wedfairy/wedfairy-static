@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: "ift";
-  src: url("../fonts/ift0324/iconfont.eot"); /* IE9*/
-  src: url("../fonts/ift0324/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("../fonts/ift0324/iconfont.woff") format("woff"), /* chrome、firefox */
-  url("../fonts/ift0324/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("../fonts/ift0324/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
+  src: url("../fonts/ift0408/iconfont.eot"); /* IE9*/
+  src: url("../fonts/ift0408/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ift0408/iconfont.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ift0408/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ift0408/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
 }
 
 /* core */
@@ -75,6 +75,7 @@
 
 /* icons */
 
+.ift-weixin:before { content: "\e638"; }
 .ift-plus-circle:before { content: "\e600"; }
 .ift-chevron-down:before { content: "\e601"; }
 .ift-chevron-left:before { content: "\e602"; }
@@ -174,3 +175,4 @@
 .ift-equalizer:before { content: "\e667"; }
 .ift-spanner-o:before { content: "\e669"; }
 .ift-volume-off-o:before { content: "\e66a"; }
+.ift-times:before { content: "\e639"; }
