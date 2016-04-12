@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: "ift";
-  src: url("../fonts/ift0408/iconfont.eot"); /* IE9*/
-  src: url("../fonts/ift0408/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("../fonts/ift0408/iconfont.woff") format("woff"), /* chrome、firefox */
-  url("../fonts/ift0408/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("../fonts/ift0408/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
+  src: url("../fonts/ift0412/iconfont.eot"); /* IE9*/
+  src: url("../fonts/ift0412/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ift0412/iconfont.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ift0412/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ift0412/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
 }
 
 /* core */
@@ -73,9 +73,29 @@
   }
 }
 
+/* logo brand */
+
+.icon-logo-brand:before {
+  content: "\e664";
+  font-size: 1.3em;
+}
+
+.icon-logo-brand:after {
+  content: "\e649\e65c\e65f";
+}
+
+.icon-brand:before {
+  content: "\e649\e65c\e65f";
+}
+
 /* icons */
 
+.ift-weibo:before { content: "\e63f"; }
 .ift-weixin:before { content: "\e638"; }
+.ift-brand-ba:before { content: "\e649"; }
+.ift-brand-yin:before { content: "\e65c"; }
+.ift-brand-he:before { content: "\e65f"; }
+.ift-logo:before { content: "\e664"; }
 .ift-plus-circle:before { content: "\e600"; }
 .ift-chevron-down:before { content: "\e601"; }
 .ift-chevron-left:before { content: "\e602"; }
@@ -154,16 +174,16 @@
 .ift-aspect-ratio:before { content: "\e64f"; }
 .ift-plus:before { content: "\e650"; }
 .ift-arrows:before { content: "\e651"; }
-.ift-text-o:before { content: "\e652"; }
-.ift-text:before { content: "\e653"; }
-.ift-name-card-o:before { content: "\e654"; }
-.ift-name-card:before { content: "\e655"; }
-.ift-picture-o:before { content: "\e656"; }
-.ift-picture:before { content: "\e657"; }
-.ift-timeline-o:before { content: "\e658"; }
-.ift-timeline:before { content: "\e659"; }
-.ift-gallery-o:before { content: "\e65a"; }
-.ift-gallery:before { content: "\e65b"; }
+.ift-section-article-o:before { content: "\e652"; }
+.ift-section-article:before { content: "\e653"; }
+.ift-section-people-o:before { content: "\e654"; }
+.ift-section-people:before { content: "\e655"; }
+.ift-section-photo-o:before { content: "\e656"; }
+.ift-section-photo:before { content: "\e657"; }
+.ift-section-timeline-o:before { content: "\e658"; }
+.ift-section-timeline:before { content: "\e659"; }
+.ift-section-gallery-o:before { content: "\e65a"; }
+.ift-section-gallery:before { content: "\e65b"; }
 .ift-trash-alt-o:before { content: "\e65d"; }
 .ift-bars:before { content: "\e65e"; }
 .ift-booklet:before { content: "\e660"; }
@@ -176,3 +196,5 @@
 .ift-spanner-o:before { content: "\e669"; }
 .ift-volume-off-o:before { content: "\e66a"; }
 .ift-times:before { content: "\e639"; }
+.ift-section-weddinghero:before { content: "\e668"; }
+.ift-section-weddinghero-o:before { content: "\e66b"; }
