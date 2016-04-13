@@ -75,16 +75,16 @@
 
 /* logo brand */
 
-.icon-logo-brand:before {
+.ift-logo-brand:before {
   content: "\e664";
   font-size: 1.3em;
 }
 
-.icon-logo-brand:after {
+.ift-logo-brand:after {
   content: "\e649\e65c\e65f";
 }
 
-.icon-brand:before {
+.ift-brand:before {
   content: "\e649\e65c\e65f";
 }
 
