@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: "ift";
-  src: url("../fonts/ift0413/iconfont.eot"); /* IE9*/
-  src: url("../fonts/ift0413/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("../fonts/ift0413/iconfont.woff") format("woff"), /* chrome、firefox */
-  url("../fonts/ift0413/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("../fonts/ift0413/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
+  src: url("../fonts/ift0414/iconfont.eot"); /* IE9*/
+  src: url("../fonts/ift0414/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ift0414/iconfont.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ift0414/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ift0414/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
 }
 
 /* core */
@@ -90,15 +90,38 @@
 
 /* icons */
 
+.ift-plane:before { content: "\e670"; }
+.ift-man:before { content: "\e671"; }
 .ift-qrcode:before { content: "\e66c"; }
+.ift-display:before { content: "\e672"; }
 .ift-weibo:before { content: "\e63f"; }
+.ift-location-arrow:before { content: "\e673"; }
+.ift-woman:before { content: "\e674"; }
 .ift-weixin:before { content: "\e638"; }
+.ift-inspiration:before { content: "\e675"; }
+.ift-refresh:before { content: "\e676"; }
+.ift-location:before { content: "\e677"; }
+.ift-text:before { content: "\e678"; }
 .ift-volume-off:before { content: "\e66d"; }
 .ift-brand-ba:before { content: "\e649"; }
 .ift-brand-yin:before { content: "\e65c"; }
 .ift-brand-he:before { content: "\e65f"; }
 .ift-volume-up:before { content: "\e66e"; }
+.ift-quote-left:before { content: "\e679"; }
+.ift-quote-right:before { content: "\e67a"; }
 .ift-logo:before { content: "\e664"; }
+.ift-ellipsis-h-o:before { content: "\e67b"; }
+.ift-edit-list-ul:before { content: "\e67c"; }
+.ift-sliders:before { content: "\e67d"; }
+.ift-shop-o:before { content: "\e67e"; }
+.ift-plane-o:before { content: "\e67f"; }
+.ift-compress:before { content: "\e680"; }
+.ift-expand:before { content: "\e681"; }
+.ift-share-o:before { content: "\e682"; }
+.ift-reorder:before { content: "\e683"; }
+.ift-pencil-add:before { content: "\e684"; }
+.ift-share:before { content: "\e685"; }
+.ift-notification:before { content: "\e686"; }
 .ift-plus-circle:before { content: "\e600"; }
 .ift-chevron-down:before { content: "\e601"; }
 .ift-chevron-left:before { content: "\e602"; }
@@ -201,3 +224,4 @@
 .ift-times:before { content: "\e639"; }
 .ift-section-weddinghero:before { content: "\e668"; }
 .ift-section-weddinghero-o:before { content: "\e66b"; }
+.ift-check:before { content: "\e66f"; }
