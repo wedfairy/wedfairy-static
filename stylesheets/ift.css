@@ -3,11 +3,11 @@
 
 @font-face {
   font-family: "ift";
-  src: url("../fonts/ift0415/iconfont.eot"); /* IE9*/
-  src: url("../fonts/ift0415/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("../fonts/ift0415/iconfont.woff") format("woff"), /* chrome、firefox */
-  url("../fonts/ift0415/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("../fonts/ift0415/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
+  src: url("../fonts/ift0416/iconfont.eot"); /* IE9*/
+  src: url("../fonts/ift0416/iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("../fonts/ift0416/iconfont.woff") format("woff"), /* chrome、firefox */
+  url("../fonts/ift0416/iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("../fonts/ift0416/iconfont.svg#iconfont") format("svg"); /* iOS 4.1- */
 }
 
 /* core */
