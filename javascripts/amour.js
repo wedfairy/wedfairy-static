@@ -70,8 +70,10 @@
             Amour.isHybrid = typeof webkit != 'undefined' &&
                              typeof webkit.messageHandlers != 'undefined';
         };
-        document.addEventListener("hybriddeviceready", checkHybrid, false);
-        checkHybrid();
+        if (!Amour.isWeixin) {
+            document.addEventListener("hybriddeviceready", checkHybrid, false);
+            checkHybrid();
+        }
         // if (window.hybriddeviceready) checkHybrid();
         Amour.postHybridMessage = function(name, message) {
             if (!Amour.isHybrid) return;
