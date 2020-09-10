@@ -300,10 +300,10 @@
             small: 'imageView2/2/w/640',
             large: 'imageView2/2/w/1280'
         }
-        if (!/^http:\/\/up\.img\.8yinhe\.cn\//.test(fullpath)) {
+        if (!/^(http|https):\/\/up\.img\.8yinhe\.cn\//.test(fullpath)) {
             return fullpath;
         }
-        if (/^http:\/\/up\.img\.8yinhe\.cn\/wechat\//.test(fullpath)) {
+        if (/^(http|https):\/\/up\.img\.8yinhe\.cn\/wechat\//.test(fullpath)) {
             queries.push(optimQuery.wechat);
         }
         var optimpath = fullpath.split('?')[0];
@@ -321,7 +321,7 @@
 
     Amour.imageFullpath = function(src, options) {
         options = options || {};
-        var fullpath = /^http:\/\//.test(src) ? src : Amour.StaticURL + src;
+        var fullpath = /^(http|https):\/\//.test(src) ? src : Amour.StaticURL + src;
         return options.optimize === false ? fullpath: Amour.optimizeImage(fullpath, options);
     };
 
