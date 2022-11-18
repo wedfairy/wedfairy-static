@@ -159,6 +159,9 @@
             var options = options || {};
             if (this.next) {
                 options.url = this.next;
+                if (/^https/.test(this.url)) {
+                    options.url = options.url.replace(/^http/, 'https')
+                }
                 this.fetch(options);
             }
         },
@@ -166,6 +169,9 @@
             var options = options || {};
             if (this.previous) {
                 options.url = this.previous;
+                if (/^https/.test(this.url)) {
+                    options.url = options.url.replace(/^http/, 'https')
+                }
                 this.fetch(options);
             }
         }
